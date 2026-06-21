@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>爱游戏 · 杂志专题介绍</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', 'PingFang SC', Roboto, 'Helvetica Neue', sans-serif;
+      background: linear-gradient(145deg, #fce5d7 0%, #f8d5be 40%, #f0c4a8 100%);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 1.5rem;
+      line-height: 1.6;
+      color: #2c221c;
+    }
+
+    .magazine-card {
+      max-width: 820px;
+      width: 100%;
+      background: #fffbf8;
+      border-radius: 36px 36px 28px 28px;
+      box-shadow: 0 18px 40px rgba(140, 80, 40, 0.16), 0 6px 14px rgba(0, 0, 0, 0.04);
+      overflow: hidden;
+      transition: box-shadow 0.25s ease;
+    }
+
+    .hero {
+      background: linear-gradient(130deg, #e9ad7e, #d68d5c);
+      padding: 3.2rem 2.5rem 2.6rem;
+      text-align: center;
+      color: #2a1d14;
+      position: relative;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, #f8cfb0, #ffe7d6, #f8cfb0);
+      opacity: 0.5;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      word-break: keep-all;
+      text-shadow: 0 2px 6px rgba(190, 110, 55, 0.12);
+      color: #1f140e;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero .sub {
+      font-size: 1.1rem;
+      opacity: 0.85;
+      font-weight: 340;
+      border-top: 1px solid rgba(70, 35, 15, 0.2);
+      display: inline-block;
+      padding-top: 0.7rem;
+      margin-top: 0.2rem;
+      letter-spacing: 1px;
+    }
+
+    .content-wrap {
+      padding: 2.4rem 2.6rem 2.8rem;
+    }
+
+    .section {
+      margin-bottom: 2rem;
+    }
+
+    .section:last-of-type {
+      margin-bottom: 1.6rem;
+    }
+
+    .section h2 {
+      font-size: 1.5rem;
+      font-weight: 460;
+      border-left: 5px solid #d68d5c;
+      padding-left: 1rem;
+      margin-bottom: 0.8rem;
+      color: #3f291e;
+      letter-spacing: 0.02em;
+    }
+
+    .section p {
+      margin-bottom: 0.9rem;
+      font-size: 1rem;
+      color: #34271f;
+    }
+
+    .highlight-link {
+      display: inline-block;
+      background: #e7c2a8;
+      color: #2e1f16;
+      text-decoration: none;
+      font-weight: 500;
+      padding: 0.2rem 0.8rem;
+      border-radius: 30px;
+      transition: background 0.15s, transform 0.1s;
+      white-space: nowrap;
+      border-bottom: 1px solid transparent;
+    }
+
+    .highlight-link:hover {
+      background: #d6a582;
+      transform: translateY(-1px);
+      box-shadow: 0 2px 6px rgba(150, 80, 30, 0.15);
+    }
+
+    .feature-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2rem;
+      margin: 1rem 0 0.2rem;
+    }
+
+    .feature-item {
+      flex: 1 1 180px;
+      background: #f9efe9;
+      border-radius: 24px;
+      padding: 1rem 1.1rem;
+      box-shadow: inset 0 1px 4px rgba(255, 245, 235, 0.6), 0 3px 8px rgba(110, 60, 30, 0.06);
+    }
+
+    .feature-item span {
+      font-weight: 470;
+      display: block;
+      font-size: 1.2rem;
+      color: #6d3e28;
+      margin-bottom: 0.3rem;
+    }
+
+    .feature-item p {
+      font-size: 0.9rem;
+      margin-bottom: 0;
+      color: #4d3529;
+    }
+
+    .faq-mini {
+      background: #f5e7dd;
+      border-radius: 24px;
+      padding: 1.3rem 1.6rem;
+      margin-top: 1.2rem;
+    }
+
+    .faq-mini details {
+      margin-bottom: 0.6rem;
+    }
+
+    .faq-mini summary {
+      cursor: pointer;
+      font-weight: 470;
+      color: #3a281f;
+      padding: 0.2rem 0;
+      list-style: '▸ ';
+    }
+
+    .faq-mini details[open] summary {
+      list-style: '▾ ';
+    }
+
+    .faq-mini p {
+      margin: 0.4rem 0 0.2rem 1.2rem;
+      font-size: 0.92rem;
+      color: #3d2c22;
+    }
+
+    .footer-note {
+      background: #f3e3d7;
+      padding: 1.3rem 2.6rem;
+      text-align: center;
+      font-size: 0.95rem;
+      color: #412f25;
+      border-top: 1px solid #dcc1b0;
+      letter-spacing: 0.3px;
+    }
+
+    .footer-note a {
+      color: #4d2f1e;
+      text-decoration: none;
+      font-weight: 500;
+      background: #dfc3ad;
+      padding: 0.1rem 0.7rem;
+      border-radius: 40px;
+      transition: background 0.15s;
+    }
+
+    .footer-note a:hover {
+      background: #cdab90;
+    }
+
+    @media (max-width: 600px) {
+      body {
+        padding: 1rem 0.8rem;
+      }
+
+      .hero {
+        padding: 2.2rem 1.2rem 1.8rem;
+      }
+
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+
+      .content-wrap {
+        padding: 1.6rem 1.2rem 2rem;
+      }
+
+      .feature-grid {
+        flex-direction: column;
+      }
+
+      .footer-note {
+        padding: 1rem 1.2rem;
+      }
+
+      .section h2 {
+        font-size: 1.3rem;
+      }
+    }
+
+    @media (min-width: 1000px) {
+      .magazine-card {
+        border-radius: 44px;
+      }
+
+      .hero {
+        padding: 4rem 3.5rem 3rem;
+      }
+
+      .content-wrap {
+        padding: 3rem 3.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="magazine-card">
+    <div class="hero">
+      <h1>爱游戏 · 一站探索</h1>
+      <div class="sub">游戏爱好者的日常聚落 · 真实可信的站点</div>
+    </div>
+
+    <div class="content-wrap">
+      <!-- 背景说明 -->
+      <div class="section">
+        <h2>站点由来</h2>
+        <p>最初只是几个朋友在周末聊游戏时攒下的页面，慢慢变成了一片小天地。这里没有浮夸的标语，也没有刻意的渲染——只是想给喜欢游戏的人一个安静的角落，可以翻翻推荐、看看讨论、或者单纯点开 <a href="https://home-main-i-game.com.cn" class="highlight-link">爱游戏</a> 随便逛逛。整个站点运作得很轻，内容来自真实体验，维护也保持着生活的节奏。</p>
+        <p>很多人问这里和那些大平台有什么不同——其实没什么宏大叙事，只是每一篇介绍都有人真的玩过、写过、改过。不蹭热点，不堆关键词，把游戏本来的样子放出来就够了。</p>
+      </div>
+
+      <!-- 三段自然介绍 ① 内容特点 -->
+      <div class="section">
+        <h2>内容特点</h2>
+        <p>首页的文章大多由几位常驻作者轮换撰写，偶尔也会有路过的玩家投稿。推荐标准很简单：要么是某个类型里做得特别用心的作品，要么就是虽然小众但让人忍不住想聊两句的。没有评分轰炸，没有排行榜焦虑，只有纯粹的阅读和分享。</p>
+        <div class="feature-grid">
+          <div class="feature-item">
+            <span>🕹️ 短文为主</span>
+            <p>每篇介绍控制在几百字内，通勤路上就能读完，不占用太多精力。</p>
+          </div>
+          <div class="feature-item">
+            <span>📋 版本说明</span>
+            <p>每篇文章末尾会注明体验时的平台与版本，信息透明，不混淆视听。</p>
+          </div>
+          <div class="feature-item">
+            <span>🔗 直达页面</span>
+            <p>站内所有链接均指向 <a href="https://home-main-i-game.com.cn" style="background:transparent;padding:0;color:#6b3d26;text-decoration:underline;">爱游戏</a> 主域，没有多余跳转。</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 三段自然介绍 ② 适用场景 -->
+      <div class="section">
+        <h2>适合什么时候打开</h2>
+        <p>午后犯困、通勤放空、睡前想看点轻松的东西——这种时候打开 <a href="https://home-main-i-game.com.cn" class="highlight-link">爱游戏</a> 翻两页正合适。页面本身加载很快，没有弹窗和自动播放的视频，也不要求注册或登录。你可以只看标题，也可以点进去读完全文，全凭当时的心情。</p>
+        <p>站内没有社交功能，也没有评论区压力。文章下面只有一个小小的心形标记，点一下表示「看过，还不错」，仅此而已。对内向型玩家特别友好。</p>
+      </div>
+
+      <!-- 三段自然介绍 ③ 关于可信度 -->
+      <div class="section">
+        <h2>关于可信的说明</h2>
+        <p>目前站内所有内容都不包含商业合作或植入推广，每篇文章都是作者自发撰写。如果将来有合作内容，会在文章开头用独立段落明确标注「本篇含合作信息」，保持对读者的透明。站务邮箱公开在页面底部，任何疑问都可以直接写信。</p>
+        <p>曾经有读者问为什么不做成论坛或者社区——其实保持现在这种安静的杂志式风格，更像是一份可以随时翻阅的私人笔记。内容更新不定，但每次更新都带着诚意。</p>
+      </div>
+
+      <!-- 小FAQ摘要 -->
+      <div class="faq-mini">
+        <details>
+          <summary>内容多久更新一次？</summary>
+          <p>没有固定排期，全凭作者们的空闲时间。多的时候一周两三篇，少的时候可能两周一篇。可以偶尔回来看看，不用特意刷。</p>
+        </details>
+        <details>
+          <summary>文章里的链接安全吗？</summary>
+          <p>所有链接都指向 <a href="https://home-main-i-game.com.cn" style="background:transparent;padding:0;color:#6b3d26;text-decoration:underline;">爱游戏</a> 主站，外部链接极少且会经过人工审核，不会出现诱导或恶意地址。</p>
+        </details>
+        <details>
+          <summary>我可以投稿或者建议吗？</summary>
+          <p>当然可以。页面底部有联系方式，来信都会看，只是回复可能没那么快。</p>
+        </details>
+      </div>
+    </div>
+
+    <div class="footer-note">
+      <span>✦ 欢迎慢慢浏览 </span>
+      <a href="https://home-main-i-game.com.cn">爱游戏</a>
+      <span> ✦ 没有推送，没有焦虑，只有游戏和文字</span>
+    </div>
+  </div>
+</body>
+</html>
