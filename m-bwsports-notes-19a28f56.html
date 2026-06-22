@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>宝威体育 · 从容走进运动的日常</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: #f5f3ef;
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Noto Sans SC', sans-serif;
+      line-height: 1.7;
+      color: #2b2a27;
+    }
+
+    .hero {
+      background: linear-gradient(145deg, #0f0e0c 0%, #1f1d1a 100%);
+      color: #ece8e0;
+      padding: 6rem 1.5rem 4rem;
+      text-align: center;
+      position: relative;
+      isolation: isolate;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 80% 30%, rgba(200, 170, 120, 0.12), transparent 60%);
+      pointer-events: none;
+    }
+
+    .hero-content {
+      max-width: 720px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero h1 {
+      font-size: 2.2rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      margin-bottom: 0.6rem;
+    }
+
+    .hero p {
+      font-size: 1.05rem;
+      opacity: 0.8;
+      max-width: 540px;
+      margin: 0 auto;
+    }
+
+    .intro-quote {
+      font-size: 1.4rem;
+      font-weight: 350;
+      color: #c7b99e;
+      margin: 1.8rem 0 0.5rem;
+      line-height: 1.5;
+    }
+
+    .container {
+      max-width: 880px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    main {
+      padding: 3.5rem 0 4rem;
+    }
+
+    .story-lead {
+      font-size: 1.1rem;
+      margin-bottom: 2.2rem;
+      text-align: justify;
+    }
+
+    .story-lead a {
+      color: #9b7e5a;
+      text-decoration: none;
+      font-weight: 500;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .story-lead a:hover {
+      border-bottom-color: #9b7e5a;
+      color: #7d6548;
+    }
+
+    .feature-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      margin: 2.8rem 0 2.5rem;
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 1.6rem 1.4rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03), 0 1px 3px rgba(0, 0, 0, 0.04);
+      transition: transform 0.2s ease, box-shadow 0.25s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.06);
+    }
+
+    .card h3 {
+      font-weight: 500;
+      font-size: 1.15rem;
+      color: #1f1d1a;
+      margin-bottom: 0.45rem;
+      letter-spacing: 0.01em;
+    }
+
+    .card p {
+      font-size: 0.95rem;
+      color: #4c4a45;
+    }
+
+    .scene-wrap {
+      background: #edebe6;
+      border-radius: 28px;
+      padding: 2rem 2rem 2.2rem;
+      margin: 2.2rem 0 2.8rem;
+    }
+
+    .scene-wrap h2 {
+      font-size: 1.3rem;
+      font-weight: 480;
+      color: #1f1d1a;
+      margin-bottom: 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .scene-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2rem 2rem;
+    }
+
+    .scene-item {
+      flex: 1 1 180px;
+      padding-left: 1.2rem;
+      border-left: 3px solid #cfc3ae;
+    }
+
+    .scene-item strong {
+      display: block;
+      font-weight: 500;
+      font-size: 1rem;
+      color: #2b2a27;
+      margin-bottom: 0.2rem;
+    }
+
+    .scene-item span {
+      font-size: 0.9rem;
+      color: #5c5a54;
+    }
+
+    .faq-soft {
+      border-top: 1px solid #dad6ce;
+      padding-top: 2rem;
+      margin-top: 1.8rem;
+    }
+
+    .faq-soft details {
+      margin-bottom: 0.9rem;
+      cursor: pointer;
+    }
+
+    .faq-soft summary {
+      font-weight: 460;
+      color: #3b3935;
+      list-style: none;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.4rem 0;
+      font-size: 1rem;
+    }
+
+    .faq-soft summary::before {
+      content: '▸';
+      color: #9b7e5a;
+      font-size: 1.2rem;
+      transition: transform 0.2s;
+    }
+
+    .faq-soft details[open] summary::before {
+      transform: rotate(90deg);
+    }
+
+    .faq-soft details p {
+      padding: 0.3rem 0 0.6rem 1.6rem;
+      color: #4f4d47;
+      font-size: 0.95rem;
+    }
+
+    .closing {
+      margin-top: 2.8rem;
+      padding: 1.2rem 0 0.2rem;
+      text-align: center;
+      border-top: 1px solid #e2ddd4;
+    }
+
+    .closing p {
+      font-size: 0.98rem;
+      color: #5e5b55;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    .closing a {
+      color: #9b7e5a;
+      text-decoration: none;
+      border-bottom: 1px solid #cfc3ae;
+      font-weight: 450;
+    }
+
+    .closing a:hover {
+      color: #7d6548;
+      border-bottom-color: #7d6548;
+    }
+
+    footer {
+      background: #e8e4dc;
+      text-align: center;
+      padding: 2rem 1.5rem;
+      font-size: 0.85rem;
+      color: #6b6962;
+    }
+
+    @media (max-width: 520px) {
+      .hero h1 { font-size: 1.7rem; }
+      .hero { padding: 4rem 1rem 3rem; }
+      .card { padding: 1.2rem; }
+      .scene-wrap { padding: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-content">
+    <p class="intro-quote">偶尔跑远一点，心也会跟着变宽。</p>
+    <h1>宝威体育 &nbsp;·&nbsp; 安静在场</h1>
+    <p>一个让运动回归日常、让选择更透明的数字角落。</p>
+  </div>
+</section>
+
+<main>
+  <div class="container">
+
+    <div class="story-lead">
+      <p>
+        很多人第一次打开 <a href="https://m-bwsports.com">宝威体育</a> 的时候，没预料到会在这里停留这么久。<br>
+        原本只是随手看看项目更新，结果发现资讯排列得安静又清晰，没有闪烁弹窗，也没有语焉不详的诱导。<br>
+        界面里透着一种「我就在这里，你慢慢看」的笃定。
+      </p>
+    </div>
+
+    <div class="feature-cards">
+      <div class="card">
+        <h3>稳定入口</h3>
+        <p>页面结构轻量，从加载到浏览都利落。不管用哪个设备打开，都不必反复适应布局。</p>
+      </div>
+      <div class="card">
+        <h3>内容透明</h3>
+        <p>每一处说明都直接、克制。不堆砌修饰词，不在角落里藏模糊链接。</p>
+      </div>
+      <div class="card">
+        <h3>日常陪伴</h3>
+        <p>不制造紧迫，不强调手速。运动本身就是长久的事，好的页面也该如此。</p>
+      </div>
+      <div class="card">
+        <h3>安静质感</h3>
+        <p>低饱和配色与留白让视线舒服，信息层级分明，读起来不费力。</p>
+      </div>
+    </div>
+
+    <div class="scene-wrap">
+      <h2>▸ 你在什么场景下会想起这里</h2>
+      <div class="scene-grid">
+        <div class="scene-item">
+          <strong>下班后</strong>
+          <span>划掉一天的通知，翻几页运动资讯，不赶时间。</span>
+        </div>
+        <div class="scene-item">
+          <strong>周末早晨</strong>
+          <span>咖啡还在冒热气，慢慢看新上线的活动说明。</span>
+        </div>
+        <div class="scene-item">
+          <strong>等车的间隙</strong>
+          <span>两三分钟也能看完一段清晰的规则或赛程。</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-soft">
+      <details>
+        <summary>在宝威体育能找到什么？</summary>
+        <p>主要汇集了运动相关的项目介绍、基础规则以及日常动态。页面本身轻量，适合快速了解或日常翻阅。</p>
+      </details>
+      <details>
+        <summary>页面会频繁更换地址吗？</summary>
+        <p>目前入口稳定，域名长期有效。如果遇到访问变化，通常会在站内说明中提前提示。</p>
+      </details>
+      <details>
+        <summary>内容更新频率如何？</summary>
+        <p>保持适度节奏，不轰炸式推送。重要消息和例行更新都会以清晰的时间线呈现。</p>
+      </details>
+    </div>
+
+    <div class="closing">
+      <p>
+        如果你也在找一个不吵闹、不绕弯子的地方，<br>
+        不妨把 <a href="https://m-bwsports.com">宝威体育</a> 留在书签里。<br>
+        它就在那里，不急不慢。
+      </p>
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  <p>© 宝威体育 · 一个安静的起点</p>
+</footer>
+
+</body>
+</html>
